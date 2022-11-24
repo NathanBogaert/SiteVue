@@ -4,16 +4,19 @@
       <li>
         <router-link to="/">
           <font-awesome-icon icon="home"/>
+          <span>Home</span>
         </router-link>
       </li>
       <li>
         <router-link to="/operators">
           <font-awesome-icon icon="users"/>
+          <span>Operators</span>
         </router-link>
       </li>
       <li>
         <router-link to="/about">
           <font-awesome-icon icon="ellipsis"/>
+          <span>About</span>
         </router-link>
       </li>
     </ul>
@@ -60,28 +63,35 @@ nav > ul > li > a {
   text-align: center;
   justify-content: center;
   flex-direction: column;
-  width: 4vh;
+  width: 100px;
   height: 4vh;
   text-decoration: none;
   color: #414141;
   margin: 0 20px;
 }
 
-nav > ul > li > a::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -1px;
-  width: 100%;
-  height: 1px;
-  transform-origin: left;
-  transform: scaleX(0);
-  background: #333;
-  transition: transform 0.3s ease-out;
+nav > ul > li > a > svg {
+  position: relative;
+  transition: .5s;
 }
 
-nav > ul > li > a:hover::after {
-  transform: scaleX(1);
+nav > ul > li > a > span {
+  position: absolute;
+  width: 100px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: .02em;
+  opacity: 0;
+  transition: .5s;
+}
+
+nav > ul > li > a:hover > svg {
+  transform: translateY(-60%);
+}
+
+nav > ul > li > a:hover > span {
+  transform: translateY(60%);
+  opacity: 1;
 }
 
 nav a.router-link-exact-active {
