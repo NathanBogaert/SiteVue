@@ -6,12 +6,13 @@
 
 <style scoped>
 .operators{
-    max-height: 23vh;
+    width: 90px;
+    height: 150px;
     border: 1px solid #2c2c2c;
 }
-
 .operators:hover {
-    max-height: 33vh;
-    transition: max-height 1s;
+    width: 144px;
+    height: 240px;
+    transition: width 1s, height 1s;
 }
 </style>
