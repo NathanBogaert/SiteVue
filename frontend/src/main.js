@@ -7,10 +7,11 @@ import {
   faUser,
   faHome,
   faEllipsis,
+  faPlus,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUser, faHome, faEllipsis, faUsers);
+library.add(faUser, faHome, faEllipsis, faPlus, faUsers);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)

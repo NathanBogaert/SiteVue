@@ -9,8 +9,20 @@
       </li>
       <li>
         <router-link to="/operators">
-          <font-awesome-icon icon="users"/>
+          <font-awesome-icon icon="users" />
           <span>Operators</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/add">
+          <font-awesome-icon icon="plus" />
+          <span>Add</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/account">
+          <font-awesome-icon icon="user" />
+          <span>Account</span>
         </router-link>
       </li>
       <li>
@@ -31,7 +43,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 10vh;
+  margin-top: 80px;
 }
 
 nav {
@@ -40,7 +52,7 @@ nav {
   background-color: hsl(0, 0%, 98%);
   top: 0;
   left: 0;
-  height: 6vh;
+  height: 50px;
   width: 100%;
   box-shadow: inset 0px -1px 0px #c5c5c6;
   align-items: center;
@@ -64,7 +76,7 @@ nav > ul > li > a {
   justify-content: center;
   flex-direction: column;
   width: 100px;
-  height: 4vh;
+  height: 30px;
   text-decoration: none;
   color: #414141;
   margin: 0 20px;
@@ -80,6 +92,7 @@ nav > ul > li > a > span {
   width: 100px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
+  font-size: .9em;
   letter-spacing: .02em;
   opacity: 0;
   transition: .5s;
