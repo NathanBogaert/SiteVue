@@ -8,12 +8,6 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/operators">
-          <font-awesome-icon icon="users" />
-          <span>Operators</span>
-        </router-link>
-      </li>
-      <li>
         <router-link to="/add">
           <font-awesome-icon icon="plus" />
           <span>Add</span>
@@ -23,12 +17,6 @@
         <router-link to="/account">
           <font-awesome-icon icon="user" />
           <span>Account</span>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/about">
-          <font-awesome-icon icon="ellipsis"/>
-          <span>About</span>
         </router-link>
       </li>
     </ul>
