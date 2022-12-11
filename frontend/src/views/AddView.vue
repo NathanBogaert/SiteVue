@@ -4,30 +4,32 @@
             <label for="name">Nom du quizz</label>
             <input type="text" name="name" id="name">
         </div>
-        <div>
-            <label for="question">Question</label>
-            <input type="text" name="question" id="question">
-        </div>
-        <div>
-            <label for="choix">Choix</label>
-            <input type="text" name="choix" id="choix">
-        </div>
-        <div>
-            <label for="choix">Choix</label>
-            <input type="text" name="choix" id="choix">
-        </div>
-        <div>
-            <label for="response">Réponse</label>
-            <input type="text" name="response" id="response">
-        </div>
-        <div>
-            <button type="button">Ajouter une autre question</button>
+        <MyQuestion/>
+        <div id="buttonAdd">
+            <button onclick="addQuestion()">Ajouter une autre question</button>
         </div>
         <div>
             <button type="submit">Confirmer</button>
         </div>
     </form>
 </template>
+
+<script>
+import MyQuestion from '@/components/Question.vue'
+
+export default {
+  name: 'QuestionView',
+  components: {
+    MyQuestion
+  }
+}
+
+function addQuestion() {
+    let buttonAdd = document.getElementById("buttonAdd");
+    let newQuestion = document.createElement("MyQuestion");
+    document.body.insertBefore(newQuestion, buttonAdd);
+}
+</script>
 
 <style scoped>
 form {
