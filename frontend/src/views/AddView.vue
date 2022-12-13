@@ -4,9 +4,9 @@
             <label for="name">Nom du quizz</label>
             <input type="text" name="name" id="name">
         </div>
-        <MyQuestion/>
+        <MyQuestion id="question1"/>
         <div id="buttonAdd">
-            <button onclick="addQuestion()">Ajouter une autre question</button>
+            <button type="button">Ajouter une autre question</button>
         </div>
         <div>
             <button type="submit">Confirmer</button>
@@ -21,19 +21,13 @@ export default {
   name: 'QuestionView',
   components: {
     MyQuestion
-  }
-}
-
-function addQuestion() {
-    let buttonAdd = document.getElementById("buttonAdd");
-    let newQuestion = document.createElement("MyQuestion");
-    document.body.insertBefore(newQuestion, buttonAdd);
+  },
 }
 </script>
 
 <style scoped>
 form {
-    width: 400px;
+    width: max-content;
     margin: auto;
 }
 div {
@@ -49,7 +43,7 @@ input {
     width: 150px;
 }
 button {
-    width: 100px;
-    height: 20px;
+    padding: 5px;
+    margin-top: 5px;
 }
 </style>

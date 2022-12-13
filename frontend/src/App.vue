@@ -4,19 +4,25 @@
       <li>
         <router-link to="/">
           <font-awesome-icon icon="home"/>
-          <span>Home</span>
+          <span>Accueil</span>
         </router-link>
       </li>
       <li>
-        <router-link to="/add">
+        <router-link to="/collection">
+          <font-awesome-icon icon="rectangle-list" />
+          <span>Mes quizz</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/create">
           <font-awesome-icon icon="plus" />
-          <span>Add</span>
+          <span>Créer quizz</span>
         </router-link>
       </li>
       <li>
         <router-link to="/account">
           <font-awesome-icon icon="user" />
-          <span>Account</span>
+          <span>Compte</span>
         </router-link>
       </li>
     </ul>
@@ -64,10 +70,9 @@ nav > ul > li > a {
   justify-content: center;
   flex-direction: column;
   width: 100px;
-  height: 30px;
+  height: 100%;
   text-decoration: none;
   color: #414141;
-  margin: 0 20px;
 }
 
 nav > ul > li > a > svg {
