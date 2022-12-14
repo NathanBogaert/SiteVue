@@ -23,6 +23,16 @@ const routes = [
     component: () => import("../views/CollectionView.vue"),
   },
   {
+    path: "/question",
+    name: "quizz",
+    component: () => import("../views/QuizzView.vue"),
+  },
+  {
+    path: "/addQuestion",
+    name: "addQuestion",
+    component: () => import("../views/AddQuestion.vue"),
+  },
+  {
     path: "/:pathMatch(.*)",
     name: "NotFound",
     component: () => import("../views/404View.vue"),

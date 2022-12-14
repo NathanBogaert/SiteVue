@@ -8,36 +8,21 @@
             <label for="description">Description</label>
             <textarea v-model="quizzToAdd.description" name="description" id="description" cols="20" rows="10" maxlength="300"></textarea>
         </div>
+        <MyQuestions/>
         <div>
-            <button v-on:click="postQuizz" type="submit">Créer</button>
+            <router-link to="/addQuestion">Ajouter une question</router-link>
         </div>
     </form>
 </template>
 
 <script>
+import MyQuestions from '@/components/ShowQuestion.vue'
+
 export default {
-  name: 'MyQuizz',
-  data() {
-    return {
-        quizz: [],
-        quizzToAdd: {
-            name: "",
-            description: "",
-        }
-    }
-  },
-  methods: {
-    async postQuizz() {
-        await fetch("/create", {
-            headers: {
-                "Content-type": "application/json",
-            },
-            method: "POST",
-            body: JSON.stringify(this.quizzToAdd),
-        });
-        await this.fetchQuizz();
-    }
-  }
+    name: 'ShowQuestion',
+    components: {
+        MyQuestions
+    },
 }
 </script>
 

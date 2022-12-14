@@ -14,7 +14,7 @@
                 <input v-model="accountToAdd.password" type="password" name="password" id="password" maxlength="100">
             </div>
             <div>
-                <button v-on:click="counter=1" type="submit">S'inscrire</button>
+                <button v-on:click="counter=1, postAccount" type="submit">S'inscrire</button>
             </div>
         </form>
         <form id="connexion">
@@ -27,7 +27,7 @@
                 <input v-model="accountToAdd.password" type="password" name="password" id="password">
             </div>
             <div>
-                <button v-on:click="counter=1" type="submit">Se connecter</button>
+                <button v-on:click="counter=1, getAccount" type="submit">Se connecter</button>
             </div>
         </form>
     </template>
@@ -46,7 +46,7 @@
                 <input type="password" name="password" id="password" v-model="accountToAdd.password">
             </div>
             <div>
-                <button type="submit">Confirmer les changements</button>
+                <button v-on:click="putAccount" type="submit">Confirmer les changements</button>
             </div>
         </form>
     </template>
@@ -78,7 +78,27 @@ export default {
                 method: "POST",
                 body: JSON.stringify(this.accountToAdd),
             });
-            await this.fetchAccounts();
+            await this.fetchAccount();
+        },
+        async getAccount() {
+            await fetch("/account", {
+                headers: {
+                    "Content-type": "application/json",
+                },
+                method: "GET",
+                body: JSON.stringify(this.accountToAdd),
+            });
+            await this.fetchAccount();
+        },
+        async putAccount()  {
+            await fetch("/account", {
+                headers: {
+                    "Content-type": "application/json",
+                },
+                methods: "PUT",
+                body: JSON.stringify(this.accountToAdd),
+            });
+            await this.fetchAccount();
         }
     }
 }

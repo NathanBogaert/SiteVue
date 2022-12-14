@@ -40,7 +40,7 @@
             </div>
         </fieldset>
         <div>
-            <button type="submit">Ajouter la question</button>
+            <button v-on:click="postQuestion" type="submit">Ajouter la question</button>
         </div>
     </form>
 </template>

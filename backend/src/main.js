@@ -3,10 +3,10 @@ import bodyParser from "body-parser";
 import mariadb from "mariadb";
 
 const pool = mariadb.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "test",
+  host: "quizz.alwaysdata.net",
+  user: "quizz",
+  password: "fullstack",
+  database: "quizz",
   port: 3306,
   connectionLimit: 5,
 });
@@ -26,7 +26,7 @@ app.get("/account", async (req, res) => {
   conn.close();
 });
 
-app.get("/create", async (req, res) => {
+app.get("/quizz", async (req, res) => {
   const conn = await pool.getConnection;
   const quizz = await conn.query("SELECT name, description FROM Quizz");
   res.json(quizz);

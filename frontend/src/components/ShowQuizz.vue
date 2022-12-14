@@ -20,6 +20,16 @@ export default {
   async created() {
     const response = await fetch("/quizz");
     this.quizz = await response.json();
+  },
+  async getQuizz() {
+    await fetch("/quizz", {
+      headers: {
+          "Content-type": "application/json",
+      },
+      method: "GET",
+      body: JSON.stringify(this.quizzToAdd),
+    });
+    await this.fetchQuizz();
   }
 }
 </script>

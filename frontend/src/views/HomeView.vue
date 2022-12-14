@@ -2,7 +2,7 @@
   <div class="home">
     <ul v-for="quizz in quizzs" :key="quizz.name">
         <li>
-            <router-link to="/question">
+            <router-link to="/question/:quizz.name">
               {{ quizz.name }}
               {{ quizz.description }}
             </router-link>
