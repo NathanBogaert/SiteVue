@@ -3,6 +3,7 @@
         <li>
             <router-link to="/question">
               {{ quizz.name }}
+              {{ quizz.description }}
             </router-link>
         </li>
     </ul>
@@ -11,9 +12,6 @@
 <script>
 export default {
   name: 'ShowQuizz',
-  props: {
-    pseudo: String
-  },
   data() {
     return {
         quizzs: []

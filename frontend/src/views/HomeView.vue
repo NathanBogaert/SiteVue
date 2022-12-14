@@ -4,6 +4,7 @@
         <li>
             <router-link to="/question">
               {{ quizz.name }}
+              {{ quizz.description }}
             </router-link>
         </li>
     </ul>

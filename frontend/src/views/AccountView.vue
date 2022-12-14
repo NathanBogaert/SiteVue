@@ -3,15 +3,15 @@
         <form id="inscription">
             <div>
                 <label for="email">Email</label>
-                <input v-model="accountToAdd.email" type="email" name="email" id="email">
+                <input v-model="accountToAdd.email" type="email" name="email" id="email" maxlength="100">
             </div>
             <div>
                 <label for="pseudo">Pseudo</label>
-                <input v-model="accountToAdd.pseudo" type="text" name="pseudo" id="pseudo">
+                <input v-model="accountToAdd.pseudo" type="text" name="pseudo" id="pseudo" maxlength="100">
             </div>
             <div>
                 <label for="password">Mot de passe</label>
-                <input v-model="accountToAdd.password" type="password" name="password" id="password">
+                <input v-model="accountToAdd.password" type="password" name="password" id="password" maxlength="100">
             </div>
             <div>
                 <button v-on:click="counter=1" type="submit">S'inscrire</button>

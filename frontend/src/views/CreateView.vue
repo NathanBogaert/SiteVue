@@ -2,11 +2,11 @@
     <form>
         <div>
             <label for="name">Nom du quizz</label>
-            <input v-model="quizzToAdd.name" type="text" name="name" id="name">
+            <input v-model="quizzToAdd.name" type="text" name="name" id="name" maxlength="150">
         </div>
         <div>
             <label for="description">Description</label>
-            <textarea v-model="quizzToAdd.description" name="description" id="description" cols="20" rows="10"></textarea>
+            <textarea v-model="quizzToAdd.description" name="description" id="description" cols="20" rows="10" maxlength="300"></textarea>
         </div>
         <div>
             <button type="submit">Créer</button>
@@ -23,7 +23,6 @@ export default {
         quizzToAdd: {
             name: "",
             description: "",
-            pseudo: "",
         }
     }
   },
