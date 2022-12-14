@@ -33,8 +33,17 @@ app.get("/create", async (req, res) => {
   conn.close();
 });
 
+app.get("/question", async (req, res) => {
+  const conn = await pool.getConnection;
+  const question = await conn.query(
+    "SELECT question, response1, response2, response3, response4, trueResponse FROM Question"
+  );
+  res.json(question);
+  conn.close();
+});
+
 app.post("/account", async (req, res) => {
-  const acount = req.body;
+  const account = req.body;
   const conn = await pool.getConnection;
   const queryResult = await conn.query(
     `INSERT INTO Account (pseudo, email, password), value (?, ?, ?)`[
@@ -50,8 +59,26 @@ app.post("/create", async (req, res) => {
   const quizz = req.body;
   const conn = await pool.getConnection;
   const queryResult = await conn.query(
-    `INSERT INTO Quizz (name, description, pseudo), value (?, ?, ?)`[
-      (quizz.name, quizz.description, quizz.pseudo)
+    `INSERT INTO Quizz (name, description), value (?, ?)`[
+      (quizz.name, quizz.description)
+    ]
+  );
+  console.log(queryResult);
+  res.end;
+  conn.close();
+});
+
+app.post("/question", async (req, res) => {
+  const question = req.body;
+  const conn = await pool.getConnection;
+  const queryResult = await conn.query(
+    `INSERT INTO Question (question, response1, response2, response3, response4, trueResponse), value (?, ?, ?, ?, ?, ?)`[
+      (question.question,
+      question.response1,
+      question.response2,
+      question.response3,
+      question.response4,
+      question.trueResponse)
     ]
   );
   console.log(queryResult);
@@ -61,9 +88,9 @@ app.post("/create", async (req, res) => {
 
 app.put("/account", (req, res) => {
   const account = req.body;
-  const index = accounts.findIndex((p) => p.email === account.email);
+  const index = account.findIndex((p) => p.email === account.email);
   if (index != -1) {
-    accounts[index] = account;
+    account[index] = account;
   } else {
     res.status(400);
   }
@@ -72,9 +99,20 @@ app.put("/account", (req, res) => {
 
 app.put("/create", (req, res) => {
   const quizz = req.body;
-  const index = quizzs.findIndex((p) => p.name === quizz.name);
+  const index = quizz.findIndex((p) => p.name === quizz.name);
   if (index != -1) {
-    quizzs[index] = quizz;
+    quizz[index] = quizz;
+  } else {
+    res.status(400);
+  }
+  res.end();
+});
+
+app.put("/question", (req, res) => {
+  const question = req.body;
+  const index = question.findIndex((p) => p.question === question.question);
+  if (index != -1) {
+    question[index] = question;
   } else {
     res.status(400);
   }
@@ -97,6 +135,17 @@ app.delete("/create/:name", (req, res) => {
   const index = quizzs.findIndex((p) => p.name === name);
   if (index != -1) {
     quizzs.splice(index, 1);
+  } else {
+    res.status(400);
+  }
+  res.end();
+});
+
+app.delete("/question/:question", (req, res) => {
+  const question = req.params.question;
+  const index = question.findIndex((p) => p.question === question);
+  if (index != -1) {
+    question.splice(index, 1);
   } else {
     res.status(400);
   }

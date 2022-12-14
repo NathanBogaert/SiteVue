@@ -1,16 +1,16 @@
 <template>
-    <form>
+    <form v-for="account in accounts" :key="account.email">
         <div>
             <label for="email">Email</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" value="{{account.email}}">
         </div>
         <div>
             <label for="pseudo">Pseudo</label>
-            <input type="text" name="pseudo" id="pseudo">
+            <input type="text" name="pseudo" id="pseudo" value="{{account.pseudo}}">
         </div>
         <div>
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" value="{{account.password}}">
         </div>
         <div>
             <button type="submit">Confirmer les changements</button>
@@ -21,33 +21,34 @@
 <script>
 export default {
     name: 'LogIn',
+    data() {
+        return {
+            accounts: [],
+            accountToAdd: {
+                email: "",
+                pseudo: "",
+                password: "",
+            }
+        }
+    },
+    async createdAccount() {
+        const response = await fetch("/account");
+        this.account = await response.json();
+    },
+    methods: {
+        async postAccount() {
+            await fetch("/account", {
+                headers: {
+                    "Content-type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(this.accountToAdd),
+            });
+            await this.fetchAccounts();
+        }
+    }
 }
 </script>
 
 <style scoped>
-form {
-    width: 60%;
-    margin: auto;
-}
-div {
-    width: 100%;
-    height: auto;
-    margin: 5px;
-}
-label {
-    font-size: .95em;
-    float: left;
-}
-input {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 8px 0;
-    box-sizing: border-box;
-}
-button {
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 5px;
-}
 </style>

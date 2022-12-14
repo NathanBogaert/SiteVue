@@ -23,6 +23,7 @@ export default {
         quizzToAdd: {
             name: "",
             description: "",
+            pseudo: "",
         }
     }
   },

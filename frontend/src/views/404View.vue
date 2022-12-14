@@ -1,5 +1,5 @@
 <template>
-    <h1>PAGE NOT FOUND</h1>
+    <h1>PAGE NON TROUVE</h1>
 </template>
 
 <style scoped>

@@ -23,8 +23,8 @@ const routes = [
     component: () => import("../views/CollectionView.vue"),
   },
   {
-    path: "/*",
-    name: "404",
+    path: "/:pathMatch(.*)",
+    name: "NotFound",
     component: () => import("../views/404View.vue"),
   },
 ];
