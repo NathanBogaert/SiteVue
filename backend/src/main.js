@@ -31,7 +31,7 @@ app.use("/", express.static("public"));
 app.get("/account", async (req, res) => {
   const conn = await pool.getConnection;
   const account = await conn.query(
-    "SELECT pseudo, email, password FROM Account"
+    "SELECT pseudo, email, password FROM account"
   );
   res.json(account);
   conn.close();
@@ -39,7 +39,7 @@ app.get("/account", async (req, res) => {
 
 app.get("/quizz", async (req, res) => {
   const conn = await pool.getConnection;
-  const quizz = await conn.query("SELECT name, description FROM Quizz");
+  const quizz = await conn.query("SELECT name, description FROM quizz");
   res.json(quizz);
   conn.close();
 });
@@ -47,7 +47,7 @@ app.get("/quizz", async (req, res) => {
 app.get("/question", async (req, res) => {
   const conn = await pool.getConnection;
   const question = await conn.query(
-    "SELECT question, response1, response2, response3, response4, trueResponse FROM Question"
+    "SELECT question, response1, response2, response3, response4, trueResponse FROM question"
   );
   res.json(question);
   conn.close();
@@ -57,7 +57,7 @@ app.post("/account", async (req, res) => {
   const account = req.body;
   const conn = await pool.getConnection;
   const queryResult = await conn.query(
-    `INSERT INTO Account (pseudo, email, password), value (?, ?, ?)`[
+    `INSERT INTO account (pseudo, email, password), value (?, ?, ?)`[
       (account.pseudo, account.email, account.password)
     ]
   );
@@ -70,7 +70,7 @@ app.post("/create", async (req, res) => {
   const quizz = req.body;
   const conn = await pool.getConnection;
   const queryResult = await conn.query(
-    `INSERT INTO Quizz (name, description), value (?, ?)`[
+    `INSERT INTO quizz (name, description), value (?, ?)`[
       (quizz.name, quizz.description)
     ]
   );
@@ -83,7 +83,7 @@ app.post("/question", async (req, res) => {
   const question = req.body;
   const conn = await pool.getConnection;
   const queryResult = await conn.query(
-    `INSERT INTO Question (question, response1, response2, response3, response4, trueResponse), value (?, ?, ?, ?, ?, ?)`[
+    `INSERT INTO question (question, response1, response2, response3, response4, trueResponse), value (?, ?, ?, ?, ?, ?)`[
       (question.question,
       question.response1,
       question.response2,
