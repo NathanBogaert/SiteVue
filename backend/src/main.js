@@ -37,7 +37,7 @@ app.get("/account", async (req, res) => {
   conn.close();
 });
 
-app.get("/create", async (req, res) => {
+app.get("/collection", async (req, res) => {
   const conn = await pool.getConnection;
   const quizz = await conn.query("SELECT name, description FROM quizz");
   res.json(quizz);
@@ -66,7 +66,7 @@ app.post("/account", async (req, res) => {
   conn.close();
 });
 
-app.post("/create", async (req, res) => {
+app.post("/collection", async (req, res) => {
   const quizz = req.body;
   const conn = await pool.getConnection;
   const queryResult = await conn.query(
@@ -108,7 +108,7 @@ app.put("/account", (req, res) => {
   res.end();
 });
 
-app.put("/create", (req, res) => {
+app.put("/collection", (req, res) => {
   const quizz = req.body;
   const index = quizz.findIndex((p) => p.name === quizz.name);
   if (index != -1) {
@@ -141,7 +141,7 @@ app.delete("/account/:email", (req, res) => {
   res.end();
 });
 
-app.delete("/create/:name", (req, res) => {
+app.delete("/collection/:name", (req, res) => {
   const name = req.params.name;
   const index = quizzs.findIndex((p) => p.name === name);
   if (index != -1) {
