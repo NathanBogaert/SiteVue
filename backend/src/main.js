@@ -3,24 +3,24 @@ import bodyParser from "body-parser";
 import mariadb from "mariadb";
 
 //connect localhost
-const pool = mariadb.createPool({
+/*const pool = mariadb.createPool({
   host: "localhost",
   user: "root",
   password: "",
   database: "test",
   port: 3306,
   connectionLimit: 5,
-});
+});*/
 
 //connect alwaysdata
-/*const pool = mariadb.createPool({
+const pool = mariadb.createPool({
   host: "quizz.alwaysdata.net",
   user: "quizz",
   password: "fullstack",
   database: "quizz_db",
   port: 3306,
   connectionLimit: 5,
-});*/
+});
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use("/", express.static("public"));
 app.get("/account", async (req, res) => {
   const conn = await pool.getConnection;
   const account = await conn.query(
-    "SELECT pseudo, email, password FROM account"
+    "SELECT email, pseudo, password FROM account"
   );
   res.json(account);
   conn.close();
@@ -57,8 +57,8 @@ app.post("/account", async (req, res) => {
   const account = req.body;
   const conn = await pool.getConnection;
   const queryResult = await conn.query(
-    `INSERT INTO account (pseudo, email, password), value (?, ?, ?)`[
-      (account.pseudo, account.email, account.password)
+    `INSERT INTO account (email, pseudo, password), value (?, ?, ?)`[
+      (account.email, account.pseudo, account.password)
     ]
   );
   console.log(queryResult);
