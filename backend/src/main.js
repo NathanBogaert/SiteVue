@@ -3,24 +3,24 @@ import bodyParser from "body-parser";
 import mariadb from "mariadb";
 
 //connect localhost
-/*const pool = mariadb.createPool({
+const pool = mariadb.createPool({
   host: "localhost",
   user: "root",
   password: "",
   database: "test",
   port: 3306,
   connectionLimit: 5,
-});*/
+});
 
 //connect alwaysdata
-const pool = mariadb.createPool({
-  host: "quizz.alwaysdata.net",
+/*const pool = mariadb.createPool({
+  host: "mysql-quizz.alwaysdata.net",
   user: "quizz",
   password: "fullstack",
   database: "quizz_db",
   port: 3306,
   connectionLimit: 5,
-});
+});*/
 
 const app = express();
 
