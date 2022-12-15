@@ -14,7 +14,7 @@
                 <input v-model="accountToAdd.password" type="password" name="password" id="password" maxlength="100">
             </div>
             <div>
-                <button v-on:click="counter=1, postAccount" type="submit">S'inscrire</button>
+                <button v-on:click="counter=1, postAccount">S'inscrire</button>
             </div>
         </form>
         <form id="connexion">
@@ -27,7 +27,7 @@
                 <input v-model="accountToAdd.password" type="password" name="password" id="password">
             </div>
             <div>
-                <button v-on:click="counter=1, getAccount" type="submit">Se connecter</button>
+                <button v-on:click="counter=1, getAccount">Se connecter</button>
             </div>
         </form>
     </template>
@@ -35,18 +35,18 @@
         <form id="connected">
             <div>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" v-model="accountToAdd.email">
+                <input type="email" name="email" id="email" v-model="accountToAdd.email" maxlength="100">
             </div>
             <div>
                 <label for="pseudo">Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo" v-model="accountToAdd.pseudo">
+                <input type="text" name="pseudo" id="pseudo" v-model="accountToAdd.pseudo" maxlength="100">
             </div>
             <div>
                 <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password" v-model="accountToAdd.password">
+                <input type="password" name="password" id="password" v-model="accountToAdd.password" maxlength="100">
             </div>
             <div>
-                <button v-on:click="putAccount" type="submit">Confirmer les changements</button>
+                <button v-on:click="putAccount">Confirmer les changements</button>
             </div>
         </form>
     </template>

@@ -37,7 +37,7 @@ app.get("/account", async (req, res) => {
   conn.close();
 });
 
-app.get("/quizz", async (req, res) => {
+app.get("/create", async (req, res) => {
   const conn = await pool.getConnection;
   const quizz = await conn.query("SELECT name, description FROM quizz");
   res.json(quizz);
